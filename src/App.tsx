@@ -7,35 +7,39 @@ function App() {
   const t = {
     fr: {
       title: "Inspection aérienne et sous-marine par drone & ROV",
-      desc: "Solutions innovantes pour l’inspection industrielle, maritime et infrastructures.",
+      desc: "Solutions innovantes pour l’inspection industrielle, maritime, offshore et infrastructures.",
       services: "Nos services",
-      contact: "Contact",
+      drone: "Drone aérien",
+      rov: "ROV sous-marin",
     },
     en: {
       title: "Aerial and underwater inspection by drone & ROV",
-      desc: "Innovative solutions for industrial, maritime and infrastructure inspection.",
+      desc: "Innovative solutions for industrial, maritime, offshore and infrastructure inspection.",
       services: "Our services",
-      contact: "Contact",
+      drone: "Aerial drone",
+      rov: "Underwater ROV",
     },
     it: {
       title: "Ispezione aerea e subacquea con drone e ROV",
-      desc: "Soluzioni innovative per ispezioni industriali e marittime.",
-      services: "Servizi",
-      contact: "Contatto",
+      desc: "Soluzioni innovative per ispezioni industriali, marittime e infrastrutturali.",
+      services: "I nostri servizi",
+      drone: "Drone aereo",
+      rov: "ROV subacqueo",
     },
     es: {
       title: "Inspección aérea y submarina con drone y ROV",
       desc: "Soluciones innovadoras para inspecciones industriales y marítimas.",
-      services: "Servicios",
-      contact: "Contacto",
+      services: "Nuestros servicios",
+      drone: "Drone aéreo",
+      rov: "ROV submarino",
     },
   };
 
   return (
-    <div style={{ fontFamily: "Arial", textAlign: "center" }}>
+    <div style={{ fontFamily: "Arial", padding: "40px", textAlign: "center" }}>
       <h1>Drone ROV Service International</h1>
 
-      <div style={{ margin: "20px" }}>
+      <div style={{ margin: "20px 0" }}>
         <button onClick={() => setLang("fr")}>🇫🇷</button>{" "}
         <button onClick={() => setLang("en")}>🇬🇧</button>{" "}
         <button onClick={() => setLang("it")}>🇮🇹</button>{" "}
@@ -45,31 +49,29 @@ function App() {
       <h2>{t[lang].title}</h2>
       <p>{t[lang].desc}</p>
 
-      <img
-        src="https://images.unsplash.com/photo-1508612761958-e931b117bfd3"
-        alt="drone"
-        width="400"
-        style={{ marginTop: "20px", borderRadius: "10px" }}
-      />
+      <h3>{t[lang].services}</h3>
 
-      <h2 style={{ marginTop: "40px" }}>{t[lang].services}</h2>
-      <ul style={{ listStyle: "none" }}>
-        <li>✔ Inspection offshore & maritime</li>
-        <li>✔ Inspection portuaire</li>
-        <li>✔ Inspection barrage & ouvrages</li>
-        <li>✔ Inspection pipelines</li>
-      </ul>
+      <h4>{t[lang].drone}</h4>
+      <p>
+        ✔ Inspection de toiture<br/>
+        ✔ Inspection bâtiments<br/>
+        ✔ Inspection photovoltaïque<br/>
+        ✔ Inspection industrielle<br/>
+        ✔ Inspection infrastructures<br/>
+        ✔ Inspection lignes électriques<br/>
+        ✔ Thermographie
+      </p>
 
-      <button
-        style={{
-          marginTop: "30px",
-          padding: "10px 20px",
-          fontSize: "16px",
-          cursor: "pointer",
-        }}
-      >
-        {t[lang].contact}
-      </button>
+      <h4>{t[lang].rov}</h4>
+      <p>
+        ✔ Inspection offshore<br/>
+        ✔ Inspection maritime<br/>
+        ✔ Inspection portuaire<br/>
+        ✔ Inspection barrage<br/>
+        ✔ Inspection pipelines<br/>
+        ✔ Inspection ouvrages hydrauliques<br/>
+        ✔ Inspection fluviale
+      </p>
 
       <p style={{ marginTop: "40px" }}>
         Email : info.drsinternational@gmail.com

@@ -8,28 +8,24 @@ function App() {
     fr: {
       title: "Inspection aérienne et sous-marine par drone & ROV",
       desc: "Solutions innovantes pour l’inspection industrielle, maritime, fluvial et infrastructurelle.",
-      contact: "Contact",
     },
     en: {
       title: "Aerial and underwater inspection by drone & ROV",
       desc: "Innovative solutions for industrial, maritime, river and infrastructure inspection.",
-      contact: "Contact",
     },
     it: {
       title: "Ispezione aerea e subacquea con drone e ROV",
       desc: "Soluzioni innovative per ispezioni industriali, marittime e infrastrutturali.",
-      contact: "Contatto",
     },
     es: {
       title: "Inspección aérea y submarina con drone y ROV",
       desc: "Soluciones innovadoras para inspecciones industriales y marítimas.",
-      contact: "Contacto",
     },
   };
 
   return (
     <div style={{ fontFamily: "Arial", padding: "40px", textAlign: "center" }}>
-      <h1>Drone ROV Service International</h1>
+      <h1>Drone ROV Service international</h1>
 
       <div style={{ margin: "20px 0" }}>
         <button onClick={() => setLang("fr")}>🇫🇷</button>{" "}

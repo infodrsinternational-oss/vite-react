@@ -6,7 +6,24 @@ function App() {
   const [lang, setLang] = useState<"fr" | "en" | "it" | "es">("fr");
 
   const t = {
-    fr: {
+droneList: [
+  "Inspection toiture",
+  "Inspection bâtiments",
+  "Inspection photovoltaïque",
+  "Inspection industrielle",
+  "Inspection infrastructures",
+  "Inspection lignes électriques",
+  "Thermographie",
+],
+rovList: [
+  "Inspection offshore",
+  "Inspection maritime",
+  "Inspection portuaire",
+  "Inspection barrage",
+  "Inspection pipelines",
+  "Inspection ouvrages hydrauliques",
+  "Inspection fluviale",
+],    fr: {
       title: "Inspection aérienne et sous-marine par drone & ROV",
       desc: "Solutions innovantes pour l’inspection industrielle, maritime, fluviale et infrastructures.",
       servicesTitle: "Nos services",
@@ -22,7 +39,24 @@ function App() {
       rov: "ROV sous-marin",
     },
     en: {
-      title: "Aerial and underwater inspection by drone & ROV",
+ droneList: [
+  "Roof inspection",
+  "Building inspection",
+  "Solar panel inspection",
+  "Industrial inspection",
+  "Infrastructure inspection",
+  "Power line inspection",
+  "Thermography",
+],
+rovList: [
+  "Offshore inspection",
+  "Maritime inspection",
+  "Port inspection",
+  "Dam inspection",
+  "Pipeline inspection",
+  "Hydraulic structures inspection",
+  "River inspection",
+],      title: "Aerial and underwater inspection by drone & ROV",
       desc: "Innovative solutions for industrial, maritime, river and infrastructure inspection.",
       servicesTitle: "Our services",
       services: [
@@ -37,7 +71,24 @@ function App() {
       rov: "Underwater ROV",
     },
     it: {
-      title: "Ispezione aerea e subacquea con drone e ROV",
+ droneList: [
+  "Ispezione tetti",
+  "Ispezione edifici",
+  "Ispezione pannelli solari",
+  "Ispezione industriale",
+  "Ispezione infrastrutture",
+  "Ispezione linee elettriche",
+  "Termografia",
+],
+rovList: [
+  "Ispezione offshore",
+  "Ispezione marittima",
+  "Ispezione portuale",
+  "Ispezione dighe",
+  "Ispezione condotte",
+  "Ispezione opere idrauliche",
+  "Ispezione fluviale",
+],      title: "Ispezione aerea e subacquea con drone e ROV",
       desc: "Soluzioni innovative per ispezioni industriali, marittime e infrastrutturali.",
       servicesTitle: "I nostri servizi",
       services: [],
@@ -45,7 +96,24 @@ function App() {
       rov: "ROV subacqueo",
     },
     es: {
-      title: "Inspección aérea y submarina con drone y ROV",
+droneList: [
+  "Inspección de tejados",
+  "Inspección de edificios",
+  "Inspección de paneles solares",
+  "Inspección industrial",
+  "Inspección de infraestructuras",
+  "Inspección de líneas eléctricas",
+  "Termografía",
+],
+rovList: [
+  "Inspección offshore",
+  "Inspección marítima",
+  "Inspección portuaria",
+  "Inspección de presas",
+  "Inspección de tuberías",
+  "Inspección de obras hidráulicas",
+  "Inspección fluvial",
+],      title: "Inspección aérea y submarina con drone y ROV",
       desc: "Soluciones innovadoras para inspecciones industriales y marítimas.",
       servicesTitle: "Nuestros servicios",
       services: [],

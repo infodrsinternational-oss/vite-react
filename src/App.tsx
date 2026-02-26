@@ -68,13 +68,7 @@ function App() {
       <h2>{t[lang].title}</h2>
       <p>{t[lang].desc}</p>
 
-      <h3>{t[lang].servicesTitle}</h3>
-
-      <ul style={{ marginTop: "20px", maxWidth: "500px", margin: "20px auto", textAlign: "left" }}>
-        {t[lang].services.map((s, i) => (
-          <li key={i}>✔ {s}</li>
-        ))}
-      </ul>
+      
 
       <h4>{t[lang].drone}</h4>
       <p>

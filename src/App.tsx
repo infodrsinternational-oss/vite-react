@@ -1,7 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-
-function App() {
+import logo from "./assets/logo.png";function App() {
   const [lang, setLang] = useState<"fr" | "en" | "it" | "es">("fr");
 
   const t = {
@@ -37,7 +36,7 @@ function App() {
 
   return (
     <div style={{ fontFamily: "Arial", padding: "40px", textAlign: "center" }}>
-      <h1>Drone ROV Service International</h1>
+      <img src={logo} alt="Drone ROV Service International" width="220" />
 
       <div style={{ margin: "20px 0" }}>
         <button onClick={() => setLang("fr")}>🇫🇷</button>{" "}

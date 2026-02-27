@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./App.css";
 import logo from "./assets/logo.png";
+import "./App.css";
 
 function App() {
   const [lang, setLang] = useState<"fr" | "en" | "it" | "es">("fr");
@@ -8,148 +8,170 @@ function App() {
   const t = {
     fr: {
       title: "Inspection aérienne et sous-marine par drone & ROV",
-      desc: "Solutions innovantes pour l’inspection industrielle, maritime, fluviale et infrastructures.",
-      services: "Nos services",
+      desc: "Solutions innovantes pour l’inspection offshore, maritime, industrielle et infrastructures.",
       drone: "Drone aérien",
       rov: "ROV sous-marin",
-
-      droneList: [
+      droneServices: [
         "Inspection toiture",
-        "Inspection bâtiments",
-        "Inspection photovoltaïque",
-        "Inspection industrielle",
-        "Inspection infrastructures",
-        "Inspection lignes électriques",
+        "Bâtiments",
+        "Photovoltaïque",
+        "Industrielle",
+        "Infrastructures",
+        "Lignes électriques",
         "Thermographie",
       ],
-
-      rovList: [
+      rovServices: [
         "Inspection offshore",
-        "Inspection maritime",
-        "Inspection portuaire",
-        "Inspection barrages",
-        "Inspection pipelines",
-        "Inspection ouvrages hydrauliques",
-        "Inspection fluviale",
+        "Maritime",
+        "Portuaire",
+        "Barrages",
+        "Pipelines",
+        "Ouvrages hydrauliques",
+        "Fluvial",
       ],
     },
-
     en: {
       title: "Aerial and underwater inspection by drone & ROV",
-      desc: "Innovative solutions for industrial, maritime, river and infrastructure inspection.",
-      services: "Our services",
+      desc: "Innovative solutions for offshore, maritime, industrial and infrastructure inspection.",
       drone: "Aerial drone",
       rov: "Underwater ROV",
-
-      droneList: [
+      droneServices: [
         "Roof inspection",
-        "Building inspection",
-        "Solar panel inspection",
-        "Industrial inspection",
-        "Infrastructure inspection",
-        "Power line inspection",
+        "Buildings",
+        "Solar panels",
+        "Industrial",
+        "Infrastructure",
+        "Power lines",
         "Thermography",
       ],
-
-      rovList: [
+      rovServices: [
         "Offshore inspection",
-        "Maritime inspection",
-        "Port inspection",
-        "Dam inspection",
-        "Pipeline inspection",
-        "Hydraulic structure inspection",
-        "River inspection",
+        "Maritime",
+        "Ports",
+        "Dams",
+        "Pipelines",
+        "Hydraulic structures",
+        "River",
       ],
     },
-
     it: {
       title: "Ispezione aerea e subacquea con drone e ROV",
-      desc: "Soluzioni innovative per ispezioni industriali e marittime.",
-      services: "I nostri servizi",
+      desc: "Soluzioni innovative per ispezioni offshore, marittime e industriali.",
       drone: "Drone aereo",
       rov: "ROV subacqueo",
-
-      droneList: [
+      droneServices: [
         "Ispezione tetti",
-        "Ispezione edifici",
-        "Ispezione fotovoltaica",
-        "Ispezione industriale",
-        "Ispezione infrastrutture",
-        "Ispezione linee elettriche",
+        "Edifici",
+        "Fotovoltaico",
+        "Industriale",
+        "Infrastrutture",
+        "Linee elettriche",
         "Termografia",
       ],
-
-      rovList: [
-        "Ispezione offshore",
-        "Ispezione marittima",
-        "Ispezione portuale",
-        "Ispezione dighe",
-        "Ispezione pipeline",
-        "Ispezione strutture idrauliche",
-        "Ispezione fluviale",
+      rovServices: [
+        "Offshore",
+        "Marittimo",
+        "Porti",
+        "Dighe",
+        "Pipeline",
+        "Opere idrauliche",
+        "Fluviale",
       ],
     },
-
     es: {
       title: "Inspección aérea y submarina con drone y ROV",
-      desc: "Soluciones innovadoras para inspecciones industriales y marítimas.",
-      services: "Nuestros servicios",
+      desc: "Soluciones innovadoras para inspecciones offshore, marítimas e industriales.",
       drone: "Drone aéreo",
       rov: "ROV submarino",
-
-      droneList: [
-        "Inspección de techos",
-        "Inspección de edificios",
-        "Inspección fotovoltaica",
-        "Inspección industrial",
-        "Inspección de infraestructuras",
-        "Inspección de líneas eléctricas",
+      droneServices: [
+        "Inspección tejados",
+        "Edificios",
+        "Fotovoltaico",
+        "Industrial",
+        "Infraestructura",
+        "Líneas eléctricas",
         "Termografía",
       ],
-
-      rovList: [
-        "Inspección offshore",
-        "Inspección marítima",
-        "Inspección portuaria",
-        "Inspección de presas",
-        "Inspección de tuberías",
-        "Inspección de estructuras hidráulicas",
-        "Inspección fluvial",
+      rovServices: [
+        "Offshore",
+        "Marítimo",
+        "Puertos",
+        "Presas",
+        "Pipelines",
+        "Obras hidráulicas",
+        "Fluvial",
       ],
     },
   };
 
   return (
-    <div style={{ fontFamily: "Arial", padding: "40px", textAlign: "center" }}>
+    <div
+      style={{
+        fontFamily: "Arial",
+        padding: "40px",
+        textAlign: "center",
+        background: "#0b1c2c",
+        color: "white",
+        minHeight: "100vh",
+      }}
+    >
       <img src={logo} alt="Drone ROV Service International" width="220" />
 
       <div style={{ margin: "20px 0" }}>
-        <button onClick={() => setLang("fr")}>🇫🇷</button>
-        <button onClick={() => setLang("en")}>🇬🇧</button>
-        <button onClick={() => setLang("it")}>🇮🇹</button>
+        <button onClick={() => setLang("fr")}>🇫🇷</button>{" "}
+        <button onClick={() => setLang("en")}>🇬🇧</button>{" "}
+        <button onClick={() => setLang("it")}>🇮🇹</button>{" "}
         <button onClick={() => setLang("es")}>🇪🇸</button>
       </div>
 
       <h2>{t[lang].title}</h2>
       <p>{t[lang].desc}</p>
 
-      <h3>{t[lang].services}</h3>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "40px",
+          marginTop: "40px",
+          flexWrap: "wrap",
+        }}
+      >
+        {/* Drone */}
+        <div
+          style={{
+            background: "#132c44",
+            padding: "25px",
+            borderRadius: "12px",
+            width: "320px",
+          }}
+        >
+          <h3>{t[lang].drone}</h3>
+          <ul style={{ textAlign: "left" }}>
+            {t[lang].droneServices.map((s, i) => (
+              <li key={i}>✔ {s}</li>
+            ))}
+          </ul>
+        </div>
 
-      <h4>{t[lang].drone}</h4>
-      <ul>
-        {t[lang].droneList.map((item, i) => (
-          <li key={i}>✔ {item}</li>
-        ))}
-      </ul>
+        {/* ROV */}
+        <div
+          style={{
+            background: "#132c44",
+            padding: "25px",
+            borderRadius: "12px",
+            width: "320px",
+          }}
+        >
+          <h3>{t[lang].rov}</h3>
+          <ul style={{ textAlign: "left" }}>
+            {t[lang].rovServices.map((s, i) => (
+              <li key={i}>✔ {s}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
-      <h4>{t[lang].rov}</h4>
-      <ul>
-        {t[lang].rovList.map((item, i) => (
-          <li key={i}>✔ {item}</li>
-        ))}
-      </ul>
-
-      <p style={{ marginTop: "40px" }}>
+      <p style={{ marginTop: "50px" }}>
         Email : info.drsinternational@gmail.com
       </p>
     </div>

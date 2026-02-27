@@ -9,132 +9,104 @@ function App() {
     fr: {
       title: "Inspection aérienne et sous-marine par drone & ROV",
       desc: "Solutions innovantes pour l’inspection industrielle, maritime, fluviale et infrastructures.",
+      about:
+        "Drone ROV Service International propose des inspections techniques avancées pour les secteurs industriels, offshore et infrastructures.",
       drone: "Drone aérien",
       rov: "ROV sous-marin",
-      droneList: [
-        "Inspection toiture",
-        "Inspection bâtiments",
-        "Inspection photovoltaïque",
-        "Inspection industrielle",
-        "Inspection infrastructures",
-        "Inspection lignes électriques",
-        "Thermographie",
-      ],
-      rovList: [
-        "Inspection offshore",
-        "Inspection maritime",
-        "Inspection portuaire",
-        "Inspection barrage",
-        "Inspection pipelines",
-        "Inspection ouvrages hydrauliques",
-        "Inspection fluviale",
-      ],
+      gallery: "Galerie",
+      contact: "Demande de devis",
     },
     en: {
       title: "Aerial and underwater inspection by drone & ROV",
       desc: "Innovative solutions for industrial, maritime, river and infrastructure inspection.",
+      about:
+        "Drone ROV Service International provides advanced technical inspections for industrial, offshore and infrastructure sectors.",
       drone: "Aerial drone",
       rov: "Underwater ROV",
-      droneList: [
-        "Roof inspection",
-        "Building inspection",
-        "Solar panel inspection",
-        "Industrial inspection",
-        "Infrastructure inspection",
-        "Power line inspection",
-        "Thermography",
-      ],
-      rovList: [
-        "Offshore inspection",
-        "Maritime inspection",
-        "Port inspection",
-        "Dam inspection",
-        "Pipeline inspection",
-        "Hydraulic structures inspection",
-        "River inspection",
-      ],
+      gallery: "Gallery",
+      contact: "Request a quote",
     },
     it: {
       title: "Ispezione aerea e subacquea con drone e ROV",
       desc: "Soluzioni innovative per ispezioni industriali, marittime e infrastrutturali.",
+      about:
+        "Drone ROV Service International offre ispezioni tecniche avanzate per settori industriali e offshore.",
       drone: "Drone aereo",
       rov: "ROV subacqueo",
-      droneList: [
-        "Ispezione tetti",
-        "Ispezione edifici",
-        "Ispezione pannelli solari",
-        "Ispezione industriale",
-        "Ispezione infrastrutture",
-        "Ispezione linee elettriche",
-        "Termografia",
-      ],
-      rovList: [
-        "Ispezione offshore",
-        "Ispezione marittima",
-        "Ispezione portuale",
-        "Ispezione dighe",
-        "Ispezione condotte",
-        "Ispezione opere idrauliche",
-        "Ispezione fluviale",
-      ],
+      gallery: "Galleria",
+      contact: "Richiesta preventivo",
     },
     es: {
       title: "Inspección aérea y submarina con drone y ROV",
       desc: "Soluciones innovadoras para inspecciones industriales y marítimas.",
+      about:
+        "Drone ROV Service International ofrece inspecciones técnicas avanzadas.",
       drone: "Drone aéreo",
       rov: "ROV submarino",
-      droneList: [
-        "Inspección de tejados",
-        "Inspección de edificios",
-        "Inspección de paneles solares",
-        "Inspección industrial",
-        "Inspección de infraestructuras",
-        "Inspección de líneas eléctricas",
-        "Termografía",
-      ],
-      rovList: [
-        "Inspección offshore",
-        "Inspección marítima",
-        "Inspección portuaria",
-        "Inspección de presas",
-        "Inspección de tuberías",
-        "Inspección de obras hidráulicas",
-        "Inspección fluvial",
-      ],
+      gallery: "Galería",
+      contact: "Solicitud de presupuesto",
     },
   };
 
   return (
-    <div style={{ fontFamily: "Arial", padding: "40px", textAlign: "center" }}>
-      <img src={logo} alt="Drone ROV Service International" width="220" />
+    <div className="container">
+      <img src={logo} alt="Drone ROV Service International" className="logo" />
 
-      <div style={{ margin: "20px 0" }}>
-        <button onClick={() => setLang("fr")}>🇫🇷</button>{" "}
-        <button onClick={() => setLang("en")}>🇬🇧</button>{" "}
-        <button onClick={() => setLang("it")}>🇮🇹</button>{" "}
+      <div className="lang">
+        <button onClick={() => setLang("fr")}>🇫🇷</button>
+        <button onClick={() => setLang("en")}>🇬🇧</button>
+        <button onClick={() => setLang("it")}>🇮🇹</button>
         <button onClick={() => setLang("es")}>🇪🇸</button>
       </div>
 
-      <h2>{t[lang].title}</h2>
-      <p>{t[lang].desc}</p>
+      <h1>{t[lang].title}</h1>
+      <p className="desc">{t[lang].desc}</p>
 
-      <h3>{t[lang].drone}</h3>
-      <ul style={{ maxWidth: "500px", margin: "20px auto", textAlign: "left" }}>
-        {t[lang].droneList.map((item, index) => (
-          <li key={index}>✔ {item}</li>
-        ))}
-      </ul>
+      <section className="about">
+        <p>{t[lang].about}</p>
+      </section>
 
-      <h3>{t[lang].rov}</h3>
-      <ul style={{ maxWidth: "500px", margin: "20px auto", textAlign: "left" }}>
-        {t[lang].rovList.map((item, index) => (
-          <li key={index}>✔ {item}</li>
-        ))}
-      </ul>
+      <section className="services">
+        <div className="card">
+          <h2>{t[lang].drone}</h2>
+          <ul>
+            <li>Inspection toiture</li>
+            <li>Bâtiments</li>
+            <li>Photovoltaïque</li>
+            <li>Industrielle</li>
+            <li>Infrastructures</li>
+            <li>Lignes électriques</li>
+            <li>Thermographie</li>
+          </ul>
+        </div>
 
-      <p style={{ marginTop: "40px" }}>
-        Email : info.drsinternational@gmail.com
-      </p>
+        <div className="card">
+          <h2>{t[lang].rov}</h2>
+          <ul>
+            <li>Inspection offshore</li>
+            <li>Maritime</li>
+            <li>Portuaire</li>
+            <li>Barrages</li>
+            <li>Pipelines</li>
+            <li>Ouvrages hydrauliques</li>
+            <li>Fluvial</li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h2>{t[lang].gallery}</h2>
+        <div className="gallery">
+          <img src="https://images.unsplash.com/photo-1508615070457-7baeba4003ab" />
+          <img src="https://images.unsplash.com/photo-1527979809431-40e7a0b53fb2" />
+          <img src="https://images.unsplash.com/photo-1516939884455-1445c8652f83" />
+        </div>
+      </section>
+
+      <section className="contact">
+        <h2>{t[lang].contact}</h2>
+        <p>Email : info.drsinternational@gmail.com</p>
+      </section>
     </div>
   );
 }

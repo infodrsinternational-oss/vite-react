@@ -1,34 +1,63 @@
 body {
-  margin: 0;
-  background-color: #0f172a;
+  background: #0a0f1a;
   color: white;
   font-family: Arial, sans-serif;
 }
 
-h1, h2, h3, h4 {
-  color: #38bdf8;
+.container {
+  text-align: center;
+  padding: 40px;
 }
 
-button {
-  background-color: #1e293b;
-  color: white;
-  border: 1px solid #38bdf8;
-  padding: 8px 12px;
-  margin: 4px;
+.logo {
+  width: 200px;
+}
+
+.lang button {
+  margin: 10px;
+  font-size: 20px;
   cursor: pointer;
-  border-radius: 5px;
 }
 
-button:hover {
-  background-color: #38bdf8;
-  color: black;
+.desc {
+  max-width: 700px;
+  margin: auto;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.about {
+  margin: 40px auto;
+  max-width: 800px;
+  color: #cfd6e6;
 }
 
-li {
-  margin: 6px 0;
+.services {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #121a2b;
+  padding: 25px;
+  border-radius: 12px;
+  width: 300px;
+  text-align: left;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.gallery img {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.contact {
+  margin-top: 50px;
 }

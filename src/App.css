@@ -1,63 +1,12 @@
-body {
-  background: #0a0f1a;
-  color: white;
-  font-family: Arial, sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.container {
-  text-align: center;
-  padding: 40px;
-}
-
-.logo {
-  width: 200px;
-}
-
-.lang button {
-  margin: 10px;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.desc {
-  max-width: 700px;
-  margin: auto;
-}
-
-.about {
-  margin: 40px auto;
-  max-width: 800px;
-  color: #cfd6e6;
-}
-
-.services {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-
-.card {
-  background: #121a2b;
-  padding: 25px;
-  border-radius: 12px;
-  width: 300px;
-  text-align: left;
-}
-
-.gallery {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-.gallery img {
-  width: 300px;
-  border-radius: 10px;
-}
-
-.contact {
-  margin-top: 50px;
+body, html, #root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
 }

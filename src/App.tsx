@@ -1,6 +1,8 @@
 import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";
+import droneImg from "./assets/drone.webp";
+import rovImg from "./assets/rov.png";
 
 const T = {
   fr: {
@@ -67,44 +69,6 @@ const T = {
 
 type Lang = "fr" | "en" | "it" | "es";
 
-const DroneIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="18" y="20" width="12" height="8" rx="2" fill="#1a3a6b"/>
-    <rect x="22" y="18" width="4" height="12" rx="1" fill="#2a5a9b"/>
-    <rect x="4" y="14" width="10" height="4" rx="2" fill="#1a3a6b"/>
-    <rect x="34" y="14" width="10" height="4" rx="2" fill="#1a3a6b"/>
-    <rect x="4" y="30" width="10" height="4" rx="2" fill="#1a3a6b"/>
-    <rect x="34" y="30" width="10" height="4" rx="2" fill="#1a3a6b"/>
-    <line x1="14" y1="16" x2="18" y2="22" stroke="#1a3a6b" strokeWidth="2"/>
-    <line x1="34" y1="16" x2="30" y2="22" stroke="#1a3a6b" strokeWidth="2"/>
-    <line x1="14" y1="32" x2="18" y2="26" stroke="#1a3a6b" strokeWidth="2"/>
-    <line x1="34" y1="32" x2="30" y2="26" stroke="#1a3a6b" strokeWidth="2"/>
-    <circle cx="9" cy="13" r="3" fill="#7eb8f7"/>
-    <circle cx="39" cy="13" r="3" fill="#7eb8f7"/>
-    <circle cx="9" cy="35" r="3" fill="#7eb8f7"/>
-    <circle cx="39" cy="35" r="3" fill="#7eb8f7"/>
-    <circle cx="24" cy="24" r="3" fill="#7eb8f7"/>
-  </svg>
-);
-
-const ROVIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <rect x="10" y="16" width="28" height="18" rx="3" fill="#1a3a6b"/>
-    <rect x="14" y="20" width="8" height="6" rx="1" fill="#7eb8f7"/>
-    <circle cx="30" cy="23" r="4" fill="#0d2040" stroke="#7eb8f7" strokeWidth="1.5"/>
-    <circle cx="30" cy="23" r="2" fill="#7eb8f7"/>
-    <rect x="16" y="12" width="16" height="4" rx="1" fill="#2a5a9b"/>
-    <rect x="6" y="20" width="4" height="3" rx="1" fill="#2a5a9b"/>
-    <rect x="38" y="20" width="4" height="3" rx="1" fill="#2a5a9b"/>
-    <rect x="14" y="34" width="5" height="5" rx="1" fill="#2a5a9b"/>
-    <rect x="29" y="34" width="5" height="5" rx="1" fill="#2a5a9b"/>
-    <line x1="20" y1="39" x2="20" y2="44" stroke="#2a5a9b" strokeWidth="2"/>
-    <line x1="32" y1="39" x2="32" y2="44" stroke="#2a5a9b" strokeWidth="2"/>
-    <path d="M6 38 Q12 34 18 38" stroke="#7eb8f7" strokeWidth="1.5" fill="none" strokeDasharray="2,2"/>
-    <path d="M14 42 Q24 38 34 42" stroke="#7eb8f7" strokeWidth="1.5" fill="none" strokeDasharray="2,2"/>
-  </svg>
-);
-
 function App() {
   const [lang, setLang] = useState<Lang>("fr");
   const t = T[lang];
@@ -117,17 +81,30 @@ function App() {
   ];
 
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", color: "#222", maxWidth: "100%", overflowX: "hidden" }}>
+    <div style={{ fontFamily: "Arial, sans-serif", color: "#222", width: "100%", margin: 0, padding: 0 }}>
 
-      {/* HEADER */}
-      <div style={{ background: "#0a1628", color: "white", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", gap: 12 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-          <img src={logo} alt="Logo" style={{ width: 60, height: 60, objectFit: "contain" }} />
-          <span style={{ fontWeight: 700, fontSize: 15, lineHeight: 1.3 }}>Drone ROV Service<br />International</span>
+      {/* HEADER : logo centré grand, drapeaux dessous */}
+      <div style={{ background: "#0a1628", color: "white", padding: "28px 16px 20px", textAlign: "center", width: "100%" }}>
+        <img src={logo} alt="Logo Drone ROV Service International" style={{ width: 120, height: 120, objectFit: "contain", marginBottom: 10 }} />
+        <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: 0.5, marginBottom: 14 }}>
+          Drone ROV Service International
         </div>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: 12 }}>
           {flags.map(({ code, flag }) => (
-            <button key={code} onClick={() => setLang(code)} style={{ fontSize: 22, background: lang === code ? "rgba(255,255,255,0.2)" : "none", border: "none", cursor: "pointer", borderRadius: 4, padding: "4px 6px", opacity: lang === code ? 1 : 0.55 }}>
+            <button
+              key={code}
+              onClick={() => setLang(code)}
+              style={{
+                fontSize: 28,
+                background: lang === code ? "rgba(255,255,255,0.2)" : "none",
+                border: "none",
+                cursor: "pointer",
+                borderRadius: 6,
+                padding: "4px 8px",
+                opacity: lang === code ? 1 : 0.5,
+                transition: "opacity 0.2s",
+              }}
+            >
               {flag}
             </button>
           ))}
@@ -135,52 +112,78 @@ function App() {
       </div>
 
       {/* HERO */}
-      <div style={{ background: "#0d2040", color: "white", padding: "56px 24px", textAlign: "center" }}>
-        <h1 style={{ fontSize: "clamp(18px, 3vw, 28px)", fontWeight: 700, marginBottom: 14, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 14px" }}>{t.heroTitle}</h1>
-        <p style={{ fontSize: "clamp(13px, 2vw, 16px)", opacity: 0.85, maxWidth: 560, margin: "0 auto 10px", lineHeight: 1.6 }}>{t.heroDesc}</p>
-        <p style={{ fontSize: 13, opacity: 0.65, fontStyle: "italic" }}>{t.heroTag}</p>
+      <div style={{ background: "#0d2040", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
+        <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 700, marginBottom: 16, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 16px" }}>
+          {t.heroTitle}
+        </h1>
+        <p style={{ fontSize: "clamp(14px, 2vw, 17px)", opacity: 0.85, maxWidth: 580, margin: "0 auto 12px", lineHeight: 1.7 }}>
+          {t.heroDesc}
+        </p>
+        <p style={{ fontSize: 14, opacity: 0.6, fontStyle: "italic" }}>{t.heroTag}</p>
       </div>
 
       {/* SERVICES */}
-      <div style={{ padding: "48px 24px", background: "#f5f7fa" }}>
-        <h2 style={{ textAlign: "center", fontSize: "clamp(17px, 2.5vw, 22px)", marginBottom: 28, color: "#0a1628" }}>{t.svcTitle}</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, maxWidth: 780, margin: "0 auto" }}>
-          {[
-            { title: t.droneTitle, list: t.droneList, icon: <DroneIcon /> },
-            { title: t.rovTitle, list: t.rovList, icon: <ROVIcon /> }
-          ].map(({ title, list, icon }) => (
-            <div key={title} style={{ background: "white", borderRadius: 12, padding: 24, border: "1px solid #e0e4ea" }}>
-              <div style={{ marginBottom: 12 }}>{icon}</div>
-              <h3 style={{ fontSize: 17, color: "#0a1628", marginBottom: 12, fontWeight: 700 }}>{title}</h3>
+      <div style={{ padding: "52px 24px", background: "#f5f7fa", width: "100%" }}>
+        <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 32, color: "#0a1628" }}>
+          {t.svcTitle}
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
+
+          {/* CARTE DRONE */}
+          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+            <img src={droneImg} alt="Drone DJI Matrice" style={{ width: "100%", height: 220, objectFit: "contain", background: "#f0f4ff", padding: 12 }} />
+            <div style={{ padding: "20px 24px" }}>
+              <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
-                {list.map((s) => <li key={s} style={{ padding: "4px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>)}
+                {t.droneList.map((s) => (
+                  <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                ))}
               </ul>
             </div>
-          ))}
+          </div>
+
+          {/* CARTE ROV */}
+          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+            <img src={rovImg} alt="ROV sous-marin" style={{ width: "100%", height: 220, objectFit: "cover", background: "#0a1628" }} />
+            <div style={{ padding: "20px 24px" }}>
+              <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
+              <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                {t.rovList.map((s) => (
+                  <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* POURQUOI NOUS */}
-      <div style={{ padding: "48px 24px", background: "white" }}>
-        <h2 style={{ textAlign: "center", fontSize: "clamp(17px, 2.5vw, 22px)", marginBottom: 24, color: "#0a1628" }}>{t.whyTitle}</h2>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 16, maxWidth: 700, margin: "0 auto" }}>
-          {[["📋", t.w1, t.w1s], ["⚡", t.w2, t.w2s], ["🛡️", t.w3, t.w3s]].map(([icon, title, sub]) => (
-            <div key={String(title)} style={{ textAlign: "center", padding: "20px 14px", background: "#eef2ff", borderRadius: 10 }}>
-              <div style={{ fontSize: 24 }}>{icon}</div>
-              <strong style={{ display: "block", fontSize: 14, color: "#0a1628", marginTop: 8 }}>{title}</strong>
-              <span style={{ fontSize: 12, color: "#666" }}>{sub}</span>
+      <div style={{ padding: "52px 24px", background: "white", width: "100%" }}>
+        <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
+          {t.whyTitle}
+        </h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, maxWidth: 760, margin: "0 auto" }}>
+          {([["📋", t.w1, t.w1s], ["⚡", t.w2, t.w2s], ["🛡️", t.w3, t.w3s]] as [string, string, string][]).map(([icon, title, sub]) => (
+            <div key={title} style={{ textAlign: "center", padding: "24px 16px", background: "#eef2ff", borderRadius: 12 }}>
+              <div style={{ fontSize: 28 }}>{icon}</div>
+              <strong style={{ display: "block", fontSize: 15, color: "#0a1628", marginTop: 10 }}>{title}</strong>
+              <span style={{ fontSize: 13, color: "#666" }}>{sub}</span>
             </div>
           ))}
         </div>
       </div>
 
       {/* CONTACT */}
-      <div style={{ background: "#0a1628", color: "white", padding: "48px 24px", textAlign: "center" }}>
-        <h2 style={{ fontSize: "clamp(17px, 2.5vw, 22px)", marginBottom: 16 }}>{t.contactTitle}</h2>
-        <a href="mailto:info.drsinternational@gmail.com" style={{ color: "#7eb8f7", fontSize: 16, textDecoration: "none" }}>
+      <div style={{ background: "#0a1628", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
+        <h2 style={{ fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 18 }}>{t.contactTitle}</h2>
+        
+          href="mailto:info.drsinternational@gmail.com"
+          style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}
+        >
           info.drsinternational@gmail.com
         </a>
-        <p style={{ fontSize: 13, opacity: 0.65, marginTop: 8 }}>{t.contactSub}</p>
+        <p style={{ fontSize: 14, opacity: 0.6, marginTop: 10 }}>{t.contactSub}</p>
       </div>
 
     </div>

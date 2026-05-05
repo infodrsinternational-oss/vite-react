@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import logo from "./assets/logo.png";
 import droneImg from "./assets/drone.webp";
-import rovImg from "./assets/rov.png";
+import rovImg from "./assets/rov.jpg";
 
 const T = {
   fr: {

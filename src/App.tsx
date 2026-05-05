@@ -136,7 +136,8 @@ function App() {
             </div>
           </div>
           <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-           <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "white" }} />
+            <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "white" }} />
+            <div style={{ padding: "20px 24px" }}>
               <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
                 {t.rovList.map((s) => (

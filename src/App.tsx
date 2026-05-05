@@ -83,9 +83,9 @@ function App() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", color: "#222", width: "100%", margin: 0, padding: 0 }}>
 
-      {/* HEADER : logo centré grand, drapeaux dessous */}
+      {/* HEADER */}
       <div style={{ background: "#0a1628", color: "white", padding: "28px 16px 20px", textAlign: "center", width: "100%" }}>
-        <img src={logo} alt="Logo Drone ROV Service International" style={{ width: 120, height: 120, objectFit: "contain", marginBottom: 10 }} />
+        <img src={logo} alt="Logo" style={{ width: 120, height: 120, objectFit: "contain", marginBottom: 10 }} />
         <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: 0.5, marginBottom: 14 }}>
           Drone ROV Service International
         </div>
@@ -102,7 +102,6 @@ function App() {
                 borderRadius: 6,
                 padding: "4px 8px",
                 opacity: lang === code ? 1 : 0.5,
-                transition: "opacity 0.2s",
               }}
             >
               {flag}
@@ -113,7 +112,7 @@ function App() {
 
       {/* HERO */}
       <div style={{ background: "#0d2040", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
-        <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 700, marginBottom: 16, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 16px" }}>
+        <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 700, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 16px" }}>
           {t.heroTitle}
         </h1>
         <p style={{ fontSize: "clamp(14px, 2vw, 17px)", opacity: 0.85, maxWidth: 580, margin: "0 auto 12px", lineHeight: 1.7 }}>
@@ -129,8 +128,7 @@ function App() {
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
 
-          {/* CARTE DRONE */}
-          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
             <img src={droneImg} alt="Drone DJI Matrice" style={{ width: "100%", height: 220, objectFit: "contain", background: "#f0f4ff", padding: 12 }} />
             <div style={{ padding: "20px 24px" }}>
               <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
@@ -142,8 +140,7 @@ function App() {
             </div>
           </div>
 
-          {/* CARTE ROV */}
-          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
             <img src={rovImg} alt="ROV sous-marin" style={{ width: "100%", height: 220, objectFit: "cover", background: "#0a1628" }} />
             <div style={{ padding: "20px 24px" }}>
               <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>

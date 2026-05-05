@@ -83,7 +83,6 @@ function App() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", color: "#222", width: "100%", margin: 0, padding: 0 }}>
 
-      {/* HEADER */}
       <div style={{ background: "#0a1628", color: "white", padding: "28px 16px 20px", textAlign: "center", width: "100%" }}>
         <img src={logo} alt="Logo" style={{ width: 120, height: 120, objectFit: "contain", marginBottom: 10 }} />
         <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: 0.5, marginBottom: 14 }}>
@@ -110,7 +109,6 @@ function App() {
         </div>
       </div>
 
-      {/* HERO */}
       <div style={{ background: "#0d2040", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
         <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 700, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 16px" }}>
           {t.heroTitle}
@@ -121,15 +119,13 @@ function App() {
         <p style={{ fontSize: 14, opacity: 0.6, fontStyle: "italic" }}>{t.heroTag}</p>
       </div>
 
-      {/* SERVICES */}
       <div style={{ padding: "52px 24px", background: "#f5f7fa", width: "100%" }}>
         <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 32, color: "#0a1628" }}>
           {t.svcTitle}
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
-
           <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-            <img src={droneImg} alt="Drone DJI Matrice" style={{ width: "100%", height: 220, objectFit: "contain", background: "#f0f4ff", padding: 12 }} />
+            <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "#f0f4ff", padding: 12 }} />
             <div style={{ padding: "20px 24px" }}>
               <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
@@ -139,9 +135,8 @@ function App() {
               </ul>
             </div>
           </div>
-
           <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-            <img src={rovImg} alt="ROV sous-marin" style={{ width: "100%", height: 220, objectFit: "cover", background: "#0a1628" }} />
+            <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "cover", background: "#0a1628" }} />
             <div style={{ padding: "20px 24px" }}>
               <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
@@ -151,11 +146,9 @@ function App() {
               </ul>
             </div>
           </div>
-
         </div>
       </div>
 
-      {/* POURQUOI NOUS */}
       <div style={{ padding: "52px 24px", background: "white", width: "100%" }}>
         <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
           {t.whyTitle}
@@ -171,13 +164,9 @@ function App() {
         </div>
       </div>
 
-      {/* CONTACT */}
       <div style={{ background: "#0a1628", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
         <h2 style={{ fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 18 }}>{t.contactTitle}</h2>
-        
-          href="mailto:info.drsinternational@gmail.com"
-          style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}
-        >
+        <a href="mailto:info.drsinternational@gmail.com" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}>
           info.drsinternational@gmail.com
         </a>
         <p style={{ fontSize: 14, opacity: 0.6, marginTop: 10 }}>{t.contactSub}</p>

@@ -166,8 +166,8 @@ function App() {
 
       <div style={{ background: "#0a1628", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
         <h2 style={{ fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 18 }}>{t.contactTitle}</h2>
-        <a href="mailto:info.drsinternational@gmail.com" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}>
-          info.drsinternational@gmail.com
+        <a href="mailto:contact@drone-rov-service.com" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}>
+          contact@drone-rov-service.com
         </a>
         <p style={{ fontSize: 14, opacity: 0.6, marginTop: 10 }}>{t.contactSub}</p>
       </div>

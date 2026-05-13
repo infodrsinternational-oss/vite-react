@@ -170,6 +170,11 @@ function App() {
           contact@drone-rov-service.com
         </a>
         <p style={{ fontSize: 14, opacity: 0.6, marginTop: 10 }}>{t.contactSub}</p>
+        <div style={{ marginTop: 32 }}>
+          <a href="https://info.flagcounter.com/oNkZ">
+            <img src="https://s01.flagcounter.com/count/oNkZ/bg_0a1628/txt_FFFFFF/border_0a1628/columns_4/maxflags_16/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" style={{ border: 0 }} />
+          </a>
+        </div>
       </div>
 
     </div>

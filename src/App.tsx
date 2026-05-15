@@ -3,6 +3,8 @@ import "./App.css";
 import logo from "./assets/logo.png";
 import droneImg from "./assets/drone.webp";
 import rovImg from "./assets/rov.jpg";
+import droneBg from "./assets/drone-bg.mp4";
+import rovBg from "./assets/rov-bg.mp4";
 
 const T = {
   fr: {
@@ -83,6 +85,7 @@ function App() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", color: "#222", width: "100%", margin: 0, padding: 0 }}>
 
+      {/* HEADER */}
       <div style={{ background: "#0a1628", color: "white", padding: "28px 16px 20px", textAlign: "center", width: "100%" }}>
         <img src={logo} alt="Logo" style={{ width: 120, height: 120, objectFit: "contain", marginBottom: 10 }} />
         <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: 0.5, marginBottom: 14 }}>
@@ -109,6 +112,7 @@ function App() {
         </div>
       </div>
 
+      {/* HERO */}
       <div style={{ background: "#0d2040", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
         <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 700, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 16px" }}>
           {t.heroTitle}
@@ -119,13 +123,16 @@ function App() {
         <p style={{ fontSize: 14, opacity: 0.6, fontStyle: "italic" }}>{t.heroTag}</p>
       </div>
 
+      {/* SERVICES */}
       <div style={{ padding: "52px 24px", background: "#f5f7fa", width: "100%" }}>
         <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 32, color: "#0a1628" }}>
           {t.svcTitle}
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
+
+          {/* Carte Drone */}
           <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-            <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "#f0f4ff", padding: 12 }} />
+            <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "white", padding: 12 }} />
             <div style={{ padding: "20px 24px" }}>
               <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
               <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
@@ -135,6 +142,8 @@ function App() {
               </ul>
             </div>
           </div>
+
+          {/* Carte ROV */}
           <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
             <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "white" }} />
             <div style={{ padding: "20px 24px" }}>
@@ -146,9 +155,55 @@ function App() {
               </ul>
             </div>
           </div>
+
         </div>
       </div>
 
+      {/* VIDEO DRONE */}
+      <div style={{ position: "relative", width: "100%", height: 340, overflow: "hidden" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        >
+          <source src={droneBg} type="video/mp4" />
+        </video>
+        <div style={{
+          position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+          background: "rgba(0,0,0,0.35)",
+          display: "flex", alignItems: "center", justifyContent: "center"
+        }}>
+          <p style={{ color: "white", fontSize: "clamp(16px, 3vw, 26px)", fontWeight: 700, textAlign: "center", padding: "0 24px", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
+            {t.droneTitle}
+          </p>
+        </div>
+      </div>
+
+      {/* VIDEO ROV */}
+      <div style={{ position: "relative", width: "100%", height: 340, overflow: "hidden" }}>
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
+        >
+          <source src={rovBg} type="video/mp4" />
+        </video>
+        <div style={{
+          position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
+          background: "rgba(0,20,60,0.45)",
+          display: "flex", alignItems: "center", justifyContent: "center"
+        }}>
+          <p style={{ color: "white", fontSize: "clamp(16px, 3vw, 26px)", fontWeight: 700, textAlign: "center", padding: "0 24px", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
+            {t.rovTitle}
+          </p>
+        </div>
+      </div>
+
+      {/* POURQUOI NOUS */}
       <div style={{ padding: "52px 24px", background: "white", width: "100%" }}>
         <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
           {t.whyTitle}
@@ -164,6 +219,7 @@ function App() {
         </div>
       </div>
 
+      {/* CONTACT */}
       <div style={{ background: "#0a1628", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
         <h2 style={{ fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 18 }}>{t.contactTitle}</h2>
         <a href="mailto:contact@drone-rov-service.com" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}>

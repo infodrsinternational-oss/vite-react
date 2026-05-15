@@ -142,7 +142,7 @@ function App() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
 
             {/* Carte Drone */}
-            <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", background: "rgba(255,255,255,0.55)" }}>
+            <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", background: "rgba(255,255,255,0.35)" }}>
               <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent", padding: 12 }} />
               <div style={{ padding: "0 24px 20px" }}>
                 <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>

@@ -131,75 +131,43 @@ function App() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
 
           {/* Carte Drone */}
-          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-            <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "white", padding: 12 }} />
-            <div style={{ padding: "20px 24px" }}>
-              <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
-              <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
-                {t.droneList.map((s) => (
-                  <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
-                ))}
-              </ul>
+          <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
+            <video autoPlay muted loop playsInline
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+              <source src={droneBg} type="video/mp4" />
+            </video>
+            <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.88)", padding: "0 0 20px" }}>
+              <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent", padding: 12 }} />
+              <div style={{ padding: "0 24px" }}>
+                <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
+                <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                  {t.droneList.map((s) => (
+                    <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
           {/* Carte ROV */}
-          <div style={{ background: "white", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-            <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "white" }} />
-            <div style={{ padding: "20px 24px" }}>
-              <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
-              <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
-                {t.rovList.map((s) => (
-                  <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
-                ))}
-              </ul>
+          <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
+            <video autoPlay muted loop playsInline
+              style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+              <source src={rovBg} type="video/mp4" />
+            </video>
+            <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.88)", padding: "0 0 20px" }}>
+              <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent" }} />
+              <div style={{ padding: "0 24px" }}>
+                <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
+                <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                  {t.rovList.map((s) => (
+                    <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
 
-        </div>
-      </div>
-
-      {/* VIDEO DRONE */}
-      <div style={{ position: "relative", width: "100%", height: 340, overflow: "hidden" }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        >
-          <source src={droneBg} type="video/mp4" />
-        </video>
-        <div style={{
-          position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
-          background: "rgba(0,0,0,0.35)",
-          display: "flex", alignItems: "center", justifyContent: "center"
-        }}>
-          <p style={{ color: "white", fontSize: "clamp(16px, 3vw, 26px)", fontWeight: 700, textAlign: "center", padding: "0 24px", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
-            {t.droneTitle}
-          </p>
-        </div>
-      </div>
-
-      {/* VIDEO ROV */}
-      <div style={{ position: "relative", width: "100%", height: 340, overflow: "hidden" }}>
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover" }}
-        >
-          <source src={rovBg} type="video/mp4" />
-        </video>
-        <div style={{
-          position: "absolute", top: 0, left: 0, width: "100%", height: "100%",
-          background: "rgba(0,20,60,0.45)",
-          display: "flex", alignItems: "center", justifyContent: "center"
-        }}>
-          <p style={{ color: "white", fontSize: "clamp(16px, 3vw, 26px)", fontWeight: 700, textAlign: "center", padding: "0 24px", textShadow: "0 2px 8px rgba(0,0,0,0.6)" }}>
-            {t.rovTitle}
-          </p>
         </div>
       </div>
 

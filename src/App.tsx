@@ -136,7 +136,7 @@ function App() {
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
               <source src={droneBg} type="video/mp4" />
             </video>
-            <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.88)", padding: "0 0 20px" }}>
+            <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.65)", padding: "0 0 20px" }}>
               <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent", padding: 12 }} />
               <div style={{ padding: "0 24px" }}>
                 <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
@@ -155,7 +155,7 @@ function App() {
               style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
               <source src={rovBg} type="video/mp4" />
             </video>
-            <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.88)", padding: "0 0 20px" }}>
+            <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.65)", padding: "0 0 20px" }}>
               <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent" }} />
               <div style={{ padding: "0 24px" }}>
                 <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>

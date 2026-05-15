@@ -3,7 +3,6 @@ import "./App.css";
 import logo from "./assets/logo.png";
 import droneImg from "./assets/drone.webp";
 import rovImg from "./assets/rov.jpg";
-import droneBg from "./assets/drone-bg.mp4";
 import rovBg from "./assets/rov-bg.mp4";
 
 const T = {
@@ -123,10 +122,10 @@ function App() {
         <p style={{ fontSize: 14, opacity: 0.6, fontStyle: "italic" }}>{t.heroTag}</p>
       </div>
 
-      {/* SERVICES + POURQUOI NOUS — vidéo commune en fond */}
+      {/* SERVICES + POURQUOI NOUS — 1 seule vidéo en fond */}
       <div style={{ position: "relative", width: "100%" }}>
 
-        {/* Vidéo de fond */}
+        {/* Vidéo de fond unique */}
         <video autoPlay muted loop playsInline
           style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
           <source src={rovBg} type="video/mp4" />
@@ -143,40 +142,28 @@ function App() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
 
             {/* Carte Drone */}
-            <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-              <video autoPlay muted loop playsInline
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
-                <source src={droneBg} type="video/mp4" />
-              </video>
-              <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.65)", padding: "0 0 20px" }}>
-                <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent", padding: 12 }} />
-                <div style={{ padding: "0 24px" }}>
-                  <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
-                  <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
-                    {t.droneList.map((s) => (
-                      <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
-                    ))}
-                  </ul>
-                </div>
+            <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", background: "rgba(255,255,255,0.65)" }}>
+              <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent", padding: 12 }} />
+              <div style={{ padding: "0 24px 20px" }}>
+                <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
+                <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                  {t.droneList.map((s) => (
+                    <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                  ))}
+                </ul>
               </div>
             </div>
 
             {/* Carte ROV */}
-            <div style={{ position: "relative", borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea" }}>
-              <video autoPlay muted loop playsInline
-                style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
-                <source src={rovBg} type="video/mp4" />
-              </video>
-              <div style={{ position: "relative", zIndex: 1, background: "rgba(255,255,255,0.65)", padding: "0 0 20px" }}>
-                <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent" }} />
-                <div style={{ padding: "0 24px" }}>
-                  <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
-                  <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
-                    {t.rovList.map((s) => (
-                      <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
-                    ))}
-                  </ul>
-                </div>
+            <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", background: "rgba(255,255,255,0.65)" }}>
+              <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent" }} />
+              <div style={{ padding: "0 24px 20px" }}>
+                <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
+                <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                  {t.rovList.map((s) => (
+                    <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                  ))}
+                </ul>
               </div>
             </div>
 

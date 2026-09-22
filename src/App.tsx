@@ -19,6 +19,9 @@ const T = {
     w1: "Rapports HD détaillés", w1s: "Documentation complète",
     w2: "Interventions rapides", w2s: "Délais optimisés",
     w3: "Technologies avancées", w3s: "Drone & ROV de pointe",
+    w4: "Diplômes et formation",
+    w4items: ["STS 01", "STS 02", "Formation d'inspection thermographie par drones", "Formation d'inspection technique par drones"],
+    w5: "26 ans d'expérience", w5s: "En tant que scaphandrier",
     contactTitle: "Contact", contactSub: "Devis gratuit et rapide",
   },
   en: {
@@ -34,6 +37,9 @@ const T = {
     w1: "Detailed HD reports", w1s: "Complete documentation",
     w2: "Fast interventions", w2s: "Optimized deadlines",
     w3: "Advanced technologies", w3s: "Cutting-edge drone & ROV",
+    w4: "Certifications & training",
+    w4items: ["STS 01", "STS 02", "Drone thermography inspection training", "Drone technical inspection training"],
+    w5: "26 years experience", w5s: "As a professional diver",
     contactTitle: "Contact", contactSub: "Free and fast quote",
   },
   it: {
@@ -49,6 +55,9 @@ const T = {
     w1: "Rapporti HD dettagliati", w1s: "Documentazione completa",
     w2: "Interventi rapidi", w2s: "Tempi ottimizzati",
     w3: "Tecnologie avanzate", w3s: "Drone & ROV all'avanguardia",
+    w4: "Diplomi e formazione",
+    w4items: ["STS 01", "STS 02", "Formazione ispezione termografica con drone", "Formazione ispezione tecnica con drone"],
+    w5: "26 anni di esperienza", w5s: "Come sommozzatore professionista",
     contactTitle: "Contatto", contactSub: "Preventivo gratuito e rapido",
   },
   es: {
@@ -64,6 +73,9 @@ const T = {
     w1: "Informes HD detallados", w1s: "Documentación completa",
     w2: "Intervenciones rápidas", w2s: "Plazos optimizados",
     w3: "Tecnologías avanzadas", w3s: "Drone & ROV de vanguardia",
+    w4: "Diplomas y formación",
+    w4items: ["STS 01", "STS 02", "Formación en inspección termográfica con drone", "Formación en inspección técnica con drone"],
+    w5: "26 años de experiencia", w5s: "Como buzo profesional",
     contactTitle: "Contacto", contactSub: "Presupuesto gratuito y rápido",
   },
 };
@@ -175,7 +187,7 @@ function App() {
           <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
             {t.whyTitle}
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, maxWidth: 760, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, maxWidth: 1040, margin: "0 auto" }}>
             {([["📋", t.w1, t.w1s], ["⚡", t.w2, t.w2s], ["🛡️", t.w3, t.w3s]] as [string, string, string][]).map(([icon, title, sub]) => (
               <div key={title} style={{ textAlign: "center", padding: "24px 16px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
                 <div style={{ fontSize: 28 }}>{icon}</div>
@@ -183,6 +195,25 @@ function App() {
                 <span style={{ fontSize: 13, color: "#666" }}>{sub}</span>
               </div>
             ))}
+
+            {/* Carte Diplômes et formation (drone) */}
+            <div style={{ textAlign: "center", padding: "24px 16px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+              <img src={droneImg} alt="Drone" style={{ width: 48, height: 48, objectFit: "contain", margin: "0 auto" }} />
+              <strong style={{ display: "block", fontSize: 15, color: "#0a1628", marginTop: 10, marginBottom: 8 }}>{t.w4}</strong>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 13, color: "#666", lineHeight: 1.6 }}>
+                {t.w4items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Carte 26 ans d'expérience (ROV / scaphandrier) */}
+            <div style={{ textAlign: "center", padding: "24px 16px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+              <img src={rovImg} alt="ROV" style={{ width: 48, height: 48, objectFit: "contain", margin: "0 auto" }} />
+              <strong style={{ display: "block", fontSize: 15, color: "#0a1628", marginTop: 10 }}>{t.w5}</strong>
+              <span style={{ fontSize: 13, color: "#666" }}>{t.w5s}</span>
+            </div>
+
           </div>
         </div>
 

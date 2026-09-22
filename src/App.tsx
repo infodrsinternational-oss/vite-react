@@ -187,20 +187,20 @@ function App() {
           <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
             {t.whyTitle}
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: 16, maxWidth: 1040, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, maxWidth: 1100, margin: "0 auto" }}>
             {([["📋", t.w1, t.w1s], ["⚡", t.w2, t.w2s], ["🛡️", t.w3, t.w3s]] as [string, string, string][]).map(([icon, title, sub]) => (
-              <div key={title} style={{ textAlign: "center", padding: "24px 16px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
-                <div style={{ fontSize: 28 }}>{icon}</div>
-                <strong style={{ display: "block", fontSize: 15, color: "#0a1628", marginTop: 10 }}>{title}</strong>
-                <span style={{ fontSize: 13, color: "#666" }}>{sub}</span>
+              <div key={title} style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+                <div style={{ fontSize: 22 }}>{icon}</div>
+                <strong style={{ display: "block", fontSize: 13, color: "#0a1628", marginTop: 8 }}>{title}</strong>
+                <span style={{ fontSize: 11, color: "#666" }}>{sub}</span>
               </div>
             ))}
 
             {/* Carte Diplômes et formation (drone) */}
-            <div style={{ textAlign: "center", padding: "24px 16px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
-              <img src={droneImg} alt="Drone" style={{ width: 48, height: 48, objectFit: "contain", margin: "0 auto" }} />
-              <strong style={{ display: "block", fontSize: 15, color: "#0a1628", marginTop: 10, marginBottom: 8 }}>{t.w4}</strong>
-              <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 13, color: "#666", lineHeight: 1.6 }}>
+            <div style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+              <img src={droneImg} alt="Drone" style={{ width: 36, height: 36, objectFit: "contain", margin: "0 auto" }} />
+              <strong style={{ display: "block", fontSize: 13, color: "#0a1628", marginTop: 8, marginBottom: 6 }}>{t.w4}</strong>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 10.5, color: "#666", lineHeight: 1.5 }}>
                 {t.w4items.map((item) => (
                   <li key={item}>{item}</li>
                 ))}
@@ -208,10 +208,10 @@ function App() {
             </div>
 
             {/* Carte 26 ans d'expérience (ROV / scaphandrier) */}
-            <div style={{ textAlign: "center", padding: "24px 16px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
-              <img src={rovImg} alt="ROV" style={{ width: 48, height: 48, objectFit: "contain", margin: "0 auto" }} />
-              <strong style={{ display: "block", fontSize: 15, color: "#0a1628", marginTop: 10 }}>{t.w5}</strong>
-              <span style={{ fontSize: 13, color: "#666" }}>{t.w5s}</span>
+            <div style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+              <img src={rovImg} alt="ROV" style={{ width: 36, height: 36, objectFit: "contain", margin: "0 auto" }} />
+              <strong style={{ display: "block", fontSize: 13, color: "#0a1628", marginTop: 8 }}>{t.w5}</strong>
+              <span style={{ fontSize: 11, color: "#666" }}>{t.w5s}</span>
             </div>
 
           </div>

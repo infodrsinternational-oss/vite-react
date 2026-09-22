@@ -39,7 +39,7 @@ const T = {
     w3: "Advanced technologies", w3s: "Cutting-edge drone & ROV",
     w4: "Certifications & training",
     w4items: ["STS 01", "STS 02", "Drone thermography inspection training", "Drone technical inspection training"],
-    w5: "26 years experience", w5s: "As a professional diver",
+    w5: "26 years experience", w5s: "As a commercial diver",
     contactTitle: "Contact", contactSub: "Free and fast quote",
   },
   it: {
@@ -57,7 +57,7 @@ const T = {
     w3: "Tecnologie avanzate", w3s: "Drone & ROV all'avanguardia",
     w4: "Diplomi e formazione",
     w4items: ["STS 01", "STS 02", "Formazione ispezione termografica con drone", "Formazione ispezione tecnica con drone"],
-    w5: "26 anni di esperienza", w5s: "Come sommozzatore professionista",
+    w5: "26 anni di esperienza", w5s: "Come palombaro",
     contactTitle: "Contatto", contactSub: "Preventivo gratuito e rapido",
   },
   es: {

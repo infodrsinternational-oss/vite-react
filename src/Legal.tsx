@@ -48,7 +48,7 @@ export function MentionsLegalesModal({ onClose }: { onClose: () => void }) {
         <br />
         Email : <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
         <br />
-        Directeur de la publication : [Votre nom et prénom]
+        Directeur de la publication : [Dom]
       </p>
 
       <p>

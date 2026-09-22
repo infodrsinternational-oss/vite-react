@@ -187,7 +187,22 @@ function App() {
           <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
             {t.whyTitle}
           </h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 10, maxWidth: 1100, margin: "0 auto" }}>
+          <style>{`
+            .why-grid {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 10px;
+              max-width: 1100px;
+              margin: 0 auto;
+            }
+            @media (max-width: 700px) {
+              .why-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 380px) {
+              .why-grid { grid-template-columns: 1fr; max-width: 320px; }
+            }
+          `}</style>
+          <div className="why-grid">
             {([["📋", t.w1, t.w1s], ["⚡", t.w2, t.w2s], ["🛡️", t.w3, t.w3s]] as [string, string, string][]).map(([icon, title, sub]) => (
               <div key={title} style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
                 <div style={{ fontSize: 22 }}>{icon}</div>

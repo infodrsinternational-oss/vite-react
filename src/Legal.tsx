@@ -1,241 +1,263 @@
-import { useState, useEffect, type ReactNode, type CSSProperties } from "react";
+import { useState } from "react";
+import "./App.css";
+import logo from "./assets/logo.png";
+import droneImg from "./assets/drone.webp";
+import rovImg from "./assets/rov.jpg";
+import rovBg from "./assets/rov-bg.mp4";
+import { CookieBanner, LegalFooterLinks } from "./Legal";
 
-const COMPANY = {
-  name: "Drone ROV Service International (DRSI)",
-  status: "Entrepreneur individuel (auto-entrepreneur / micro-entreprise)",
-  siret: "839 423 688 00028",
-  address: "211 quartier de l'Église, 83570 Carcès, France", // ⚠️ à mettre à jour dès la nouvelle domiciliation effective
-  email: "contact@drone-rov-service.com",
+const T = {
+  fr: {
+    heroTitle: "Inspection aérienne et sous-marine par drone & ROV",
+    heroDesc: "Solutions innovantes pour l'inspection industrielle, maritime, fluviale et infrastructurelle.",
+    heroTag: "Sécurité · Précision · Réduction des coûts",
+    svcTitle: "Nos services",
+    droneTitle: "Drone aérien",
+    droneList: ["Inspection toiture & bâtiment","Inspection photovoltaïque","Inspection industrielle","Inspection infrastructures","Inspection lignes électriques","Thermographie"],
+    rovTitle: "ROV sous-marin",
+    rovList: ["Inspection offshore & maritime","Inspection portuaire","Inspection barrages","Inspection puits","Inspection fluviale","Ouvrages hydrauliques"],
+    whyTitle: "Pourquoi nous choisir",
+    w1: "Rapports HD détaillés", w1s: "Documentation complète",
+    w2: "Interventions rapides", w2s: "Délais optimisés",
+    w3: "Technologies avancées", w3s: "Drone & ROV de pointe",
+    w4: "Diplômes et formation",
+    w4items: ["STS 01", "STS 02", "Formation d'inspection thermographie par drones", "Formation d'inspection technique par drones"],
+    w5: "26 ans d'expérience", w5s: "En tant que scaphandrier",
+    contactTitle: "Contact", contactSub: "Devis gratuit et rapide", phoneLabel: "Tél.",
+  },
+  en: {
+    heroTitle: "Aerial and underwater inspection by drone & ROV",
+    heroDesc: "Innovative solutions for industrial, maritime, river and infrastructure inspection.",
+    heroTag: "Safety · Precision · Cost reduction",
+    svcTitle: "Our services",
+    droneTitle: "Aerial drone",
+    droneList: ["Roof & building inspection","Photovoltaic inspection","Industrial inspection","Infrastructure inspection","Power line inspection","Thermography"],
+    rovTitle: "Underwater ROV",
+    rovList: ["Offshore & maritime inspection","Port inspection","Dam inspection","Well inspection","River inspection","Hydraulic structures"],
+    whyTitle: "Why choose us",
+    w1: "Detailed HD reports", w1s: "Complete documentation",
+    w2: "Fast interventions", w2s: "Optimized deadlines",
+    w3: "Advanced technologies", w3s: "Cutting-edge drone & ROV",
+    w4: "Certifications & training",
+    w4items: ["STS 01", "STS 02", "Drone thermography inspection training", "Drone technical inspection training"],
+    w5: "26 years experience", w5s: "As a commercial diver",
+    contactTitle: "Contact", contactSub: "Free and fast quote", phoneLabel: "Phone",
+  },
+  it: {
+    heroTitle: "Ispezione aerea e subacquea con drone e ROV",
+    heroDesc: "Soluzioni innovative per ispezioni industriali, marittime, fluviali e infrastrutturali.",
+    heroTag: "Sicurezza · Precisione · Riduzione dei costi",
+    svcTitle: "I nostri servizi",
+    droneTitle: "Drone aereo",
+    droneList: ["Ispezione tetto e edificio","Ispezione fotovoltaico","Ispezione industriale","Ispezione infrastrutture","Ispezione linee elettriche","Termografia"],
+    rovTitle: "ROV subacqueo",
+    rovList: ["Ispezione offshore e marittima","Ispezione portuale","Ispezione dighe","Ispezione pozzi","Ispezione fluviale","Opere idrauliche"],
+    whyTitle: "Perché sceglierci",
+    w1: "Rapporti HD dettagliati", w1s: "Documentazione completa",
+    w2: "Interventi rapidi", w2s: "Tempi ottimizzati",
+    w3: "Tecnologie avanzate", w3s: "Drone & ROV all'avanguardia",
+    w4: "Diplomi e formazione",
+    w4items: ["STS 01", "STS 02", "Formazione ispezione termografica con drone", "Formazione ispezione tecnica con drone"],
+    w5: "26 anni di esperienza", w5s: "Come palombaro",
+    contactTitle: "Contatto", contactSub: "Preventivo gratuito e rapido", phoneLabel: "Tel.",
+  },
+  es: {
+    heroTitle: "Inspección aérea y submarina con drone y ROV",
+    heroDesc: "Soluciones innovadoras para inspecciones industriales, marítimas, fluviales e infraestructurales.",
+    heroTag: "Seguridad · Precisión · Reducción de costes",
+    svcTitle: "Nuestros servicios",
+    droneTitle: "Drone aéreo",
+    droneList: ["Inspección de techos y edificios","Inspección fotovoltaica","Inspección industrial","Inspección de infraestructuras","Inspección de líneas eléctricas","Termografía"],
+    rovTitle: "ROV submarino",
+    rovList: ["Inspección offshore y marítima","Inspección portuaria","Inspección de presas","Inspección de pozos","Inspección fluvial","Obras hidráulicas"],
+    whyTitle: "Por qué elegirnos",
+    w1: "Informes HD detallados", w1s: "Documentación completa",
+    w2: "Intervenciones rápidas", w2s: "Plazos optimizados",
+    w3: "Tecnologías avanzadas", w3s: "Drone & ROV de vanguardia",
+    w4: "Diplomas y formación",
+    w4items: ["STS 01", "STS 02", "Formación en inspección termográfica con drone", "Formación en inspección técnica con drone"],
+    w5: "26 años de experiencia", w5s: "Como buzo profesional",
+    contactTitle: "Contacto", contactSub: "Presupuesto gratuito y rápido", phoneLabel: "Tel.",
+  },
 };
 
-// ---------- Modal générique ----------
-function Modal({ title, onClose, children }: { title: string; onClose: () => void; children: ReactNode }) {
+type Lang = "fr" | "en" | "it" | "es";
+
+function App() {
+  const [lang, setLang] = useState<Lang>("fr");
+  const t = T[lang];
+
+  const flags: { code: Lang; flag: string }[] = [
+    { code: "fr", flag: "🇫🇷" },
+    { code: "en", flag: "🇬🇧" },
+    { code: "it", flag: "🇮🇹" },
+    { code: "es", flag: "🇪🇸" },
+  ];
+
   return (
-    <div
-      style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.6)", zIndex: 1000, display: "flex", alignItems: "center", justifyContent: "center", padding: 16 }}
-      onClick={onClose}
-    >
-      <div
-        style={{ background: "#fff", borderRadius: 12, maxWidth: 640, width: "100%", maxHeight: "85vh", overflowY: "auto", padding: "28px 24px" }}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-          <h2 style={{ fontSize: 20, color: "#0a1628", margin: 0 }}>{title}</h2>
-          <button onClick={onClose} aria-label="Fermer" style={{ background: "none", border: "none", fontSize: 22, cursor: "pointer", color: "#666" }}>
-            ×
-          </button>
+    <div style={{ fontFamily: "Arial, sans-serif", color: "#222", width: "100%", margin: 0, padding: 0 }}>
+
+      {/* HEADER */}
+      <div style={{ background: "#0a1628", color: "white", padding: "28px 16px 20px", textAlign: "center", width: "100%" }}>
+        <img src={logo} alt="Logo" style={{ width: 120, height: 120, objectFit: "contain", marginBottom: 10 }} />
+        <div style={{ fontWeight: 700, fontSize: 18, letterSpacing: 0.5, marginBottom: 14 }}>
+          Drone ROV Service International
         </div>
-        <div style={{ fontSize: 14, color: "#333", lineHeight: 1.7 }}>{children}</div>
+        <div style={{ display: "flex", justifyContent: "center", gap: 12 }}>
+          {flags.map(({ code, flag }) => (
+            <button
+              key={code}
+              onClick={() => setLang(code)}
+              style={{
+                fontSize: 28,
+                background: lang === code ? "rgba(255,255,255,0.2)" : "none",
+                border: "none",
+                cursor: "pointer",
+                borderRadius: 6,
+                padding: "4px 8px",
+                opacity: lang === code ? 1 : 0.5,
+              }}
+            >
+              {flag}
+            </button>
+          ))}
+        </div>
       </div>
-    </div>
-  );
-}
 
-// ---------- Mentions légales ----------
-export function MentionsLegalesModal({ onClose }: { onClose: () => void }) {
-  return (
-    <Modal title="Mentions légales" onClose={onClose}>
-      <p>
-        <strong>Éditeur du site</strong>
-        <br />
-        Nom commercial : {COMPANY.name}
-        <br />
-        Statut : {COMPANY.status}
-        <br />
-        SIRET : {COMPANY.siret}
-        <br />
-        Adresse : {COMPANY.address}
-        <br />
-        Email : <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
-        <br />
-        Directeur de la publication : [Dom]
-      </p>
-
-      <p>
-        <strong>Hébergement</strong>
-        <br />
-        Le site est hébergé par :
-        <br />
-        Vercel Inc., 440 North Barranca Avenue, Suite 4133, Covina, California 91723, États-Unis — support@vercel.com
-        <br />
-        et/ou OVH SAS, 2 rue Kellermann, 59100 Roubaix, France
-      </p>
-
-      <p>
-        <strong>Propriété intellectuelle</strong>
-        <br />
-        L'ensemble des contenus (textes, images, logo, structure) présents sur ce site est protégé par le droit
-        d'auteur. Toute reproduction, même partielle, sans autorisation préalable est interdite.
-      </p>
-    </Modal>
-  );
-}
-
-// ---------- Politique de confidentialité ----------
-export function PolitiqueConfidentialiteModal({ onClose }: { onClose: () => void }) {
-  return (
-    <Modal title="Politique de confidentialité" onClose={onClose}>
-      <p>
-        <strong>1. Responsable du traitement</strong>
-        <br />
-        {COMPANY.name}, {COMPANY.status}, SIRET {COMPANY.siret} — {COMPANY.email}
-      </p>
-
-      <p>
-        <strong>2. Données collectées</strong>
-        <br />
-        — Via le formulaire de contact : nom, email, message et, le cas échéant, téléphone.
-        <br />
-        — Via les cookies : données de navigation à des fins de mesure d'audience (voir section Cookies).
-      </p>
-
-      <p>
-        <strong>3. Finalités et base légale</strong>
-        <br />
-        Les données du formulaire sont utilisées pour répondre à vos demandes de devis ou de contact, sur la base de
-        votre consentement (art. 6.1.a du RGPD). Les cookies non essentiels ne sont déposés qu'avec votre
-        consentement.
-      </p>
-
-      <p>
-        <strong>4. Destinataires</strong>
-        <br />
-        Vos données sont destinées uniquement à {COMPANY.name}. Elles peuvent être traitées techniquement par nos
-        prestataires d'hébergement (Vercel, OVHcloud) et notre outil de mesure d'audience, dans le cadre strict de
-        leur fonction.
-      </p>
-
-      <p>
-        <strong>5. Durée de conservation</strong>
-        <br />
-        Les données issues du formulaire de contact sont conservées 3 ans maximum à compter du dernier échange. Les
-        cookies ont une durée de vie maximale de 13 mois.
-      </p>
-
-      <p>
-        <strong>6. Vos droits</strong>
-        <br />
-        Conformément au RGPD, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation,
-        d'opposition et de portabilité de vos données. Pour l'exercer, contactez-nous à{" "}
-        <a href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>. Vous pouvez également introduire une réclamation
-        auprès de la CNIL (www.cnil.fr).
-      </p>
-
-      <p>
-        <strong>7. Cookies</strong>
-        <br />
-        Ce site utilise un cookie de mesure d'audience (compteur de visites Flag Counter) qui n'est déposé qu'avec
-        votre consentement, recueilli via le bandeau affiché lors de votre première visite. Vous pouvez retirer
-        votre consentement à tout moment en réinitialisant vos préférences depuis ce même bandeau.
-      </p>
-
-      <p>
-        <strong>8. Transfert de données hors UE</strong>
-        <br />
-        Certains de nos prestataires techniques (notamment Vercel Inc.) sont basés aux États-Unis. Ces transferts
-        sont encadrés par les garanties prévues par le RGPD (clauses contractuelles types).
-      </p>
-    </Modal>
-  );
-}
-
-// ---------- Liens de pied de page ----------
-const linkBtnStyle: CSSProperties = {
-  background: "none",
-  border: "none",
-  color: "#7eb8f7",
-  textDecoration: "underline",
-  cursor: "pointer",
-  fontSize: 12,
-  padding: 0,
-};
-
-export function LegalFooterLinks() {
-  const [open, setOpen] = useState<"mentions" | "confidentialite" | null>(null);
-  return (
-    <>
-      <div style={{ display: "flex", justifyContent: "center", gap: 20, marginTop: 20, fontSize: 12, opacity: 0.8, flexWrap: "wrap" }}>
-        <button onClick={() => setOpen("mentions")} style={linkBtnStyle}>
-          Mentions légales
-        </button>
-        <button onClick={() => setOpen("confidentialite")} style={linkBtnStyle}>
-          Politique de confidentialité
-        </button>
-      </div>
-      {open === "mentions" && <MentionsLegalesModal onClose={() => setOpen(null)} />}
-      {open === "confidentialite" && <PolitiqueConfidentialiteModal onClose={() => setOpen(null)} />}
-    </>
-  );
-}
-
-// ---------- Bandeau cookies (pop-up) ----------
-export function CookieBanner() {
-  const [visible, setVisible] = useState(false);
-  const [showDetails, setShowDetails] = useState(false);
-
-  useEffect(() => {
-    const consent = localStorage.getItem("cookie-consent");
-    if (!consent) setVisible(true);
-  }, []);
-
-  const accept = () => {
-    localStorage.setItem("cookie-consent", JSON.stringify({ audience: true, date: Date.now() }));
-    setVisible(false);
-  };
-  const refuse = () => {
-    localStorage.setItem("cookie-consent", JSON.stringify({ audience: false, date: Date.now() }));
-    setVisible(false);
-  };
-
-  if (!visible) return null;
-
-  return (
-    <div
-      style={{
-        position: "fixed",
-        bottom: 0,
-        left: 0,
-        right: 0,
-        background: "#0a1628",
-        color: "white",
-        padding: "18px 20px",
-        zIndex: 2000,
-        boxShadow: "0 -4px 16px rgba(0,0,0,0.3)",
-      }}
-    >
-      <div style={{ maxWidth: 900, margin: "0 auto", display: "flex", flexWrap: "wrap", alignItems: "center", gap: 16, justifyContent: "space-between" }}>
-        <p style={{ fontSize: 13, margin: 0, flex: "1 1 320px", lineHeight: 1.6 }}>
-          Nous utilisons un cookie de mesure d'audience pour améliorer votre expérience. Vous pouvez accepter,
-          refuser, ou en savoir plus.
-          {showDetails && (
-            <span style={{ display: "block", marginTop: 8, opacity: 0.8 }}>
-              Cookie utilisé : compteur de visites (Flag Counter), déposé uniquement si vous acceptez. Aucune donnée
-              personnelle identifiable n'est collectée à cette fin. Voir notre politique de confidentialité pour
-              plus de détails.
-            </span>
-          )}
+      {/* HERO */}
+      <div style={{ background: "#0d2040", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
+        <h1 style={{ fontSize: "clamp(20px, 3.5vw, 32px)", fontWeight: 700, lineHeight: 1.4, maxWidth: 700, margin: "0 auto 16px" }}>
+          {t.heroTitle}
+        </h1>
+        <p style={{ fontSize: "clamp(14px, 2vw, 17px)", opacity: 0.85, maxWidth: 580, margin: "0 auto 12px", lineHeight: 1.7 }}>
+          {t.heroDesc}
         </p>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <button
-            onClick={() => setShowDetails((s) => !s)}
-            style={{ background: "none", border: "1px solid rgba(255,255,255,0.4)", color: "white", padding: "8px 14px", borderRadius: 6, cursor: "pointer", fontSize: 13 }}
-          >
-            {showDetails ? "Masquer" : "En savoir plus"}
-          </button>
-          <button
-            onClick={refuse}
-            style={{ background: "none", border: "1px solid rgba(255,255,255,0.4)", color: "white", padding: "8px 14px", borderRadius: 6, cursor: "pointer", fontSize: 13 }}
-          >
-            Refuser
-          </button>
-          <button
-            onClick={accept}
-            style={{ background: "#2a6fdb", border: "none", color: "white", padding: "8px 14px", borderRadius: 6, cursor: "pointer", fontSize: 13, fontWeight: 600 }}
-          >
-            Accepter
-          </button>
+        <p style={{ fontSize: 14, opacity: 0.6, fontStyle: "italic" }}>{t.heroTag}</p>
+      </div>
+
+      {/* SERVICES + POURQUOI NOUS — 1 seule vidéo en fond */}
+      <div style={{ position: "relative", width: "100%" }}>
+
+        {/* Vidéo de fond unique */}
+        <video autoPlay muted loop playsInline
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", objectFit: "cover", zIndex: 0 }}>
+          <source src={rovBg} type="video/mp4" />
+        </video>
+
+        {/* Voile semi-transparent */}
+        <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(255,255,255,0.55)", zIndex: 1 }} />
+
+        {/* SERVICES */}
+        <div style={{ position: "relative", zIndex: 2, padding: "52px 24px" }}>
+          <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 32, color: "#0a1628" }}>
+            {t.svcTitle}
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24, maxWidth: 860, margin: "0 auto" }}>
+
+            {/* Carte Drone */}
+            <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", background: "rgba(255,255,255,0.35)" }}>
+              <img src={droneImg} alt="Drone" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent", padding: 12 }} />
+              <div style={{ padding: "0 24px 20px" }}>
+                <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.droneTitle}</h3>
+                <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                  {t.droneList.map((s) => (
+                    <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Carte ROV */}
+            <div style={{ borderRadius: 14, overflow: "hidden", border: "1px solid #e0e4ea", background: "rgba(255,255,255,0.65)" }}>
+              <img src={rovImg} alt="ROV" style={{ width: "100%", height: 220, objectFit: "contain", background: "transparent" }} />
+              <div style={{ padding: "0 24px 20px" }}>
+                <h3 style={{ fontSize: 18, color: "#0a1628", marginBottom: 14, fontWeight: 700 }}>{t.rovTitle}</h3>
+                <ul style={{ listStyle: "none", padding: 0, fontSize: 14, color: "#444" }}>
+                  {t.rovList.map((s) => (
+                    <li key={s} style={{ padding: "5px 0", borderBottom: "1px solid #f0f0f0" }}>✔ {s}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        {/* POURQUOI NOUS */}
+        <div style={{ position: "relative", zIndex: 2, padding: "52px 24px" }}>
+          <h2 style={{ textAlign: "center", fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 28, color: "#0a1628" }}>
+            {t.whyTitle}
+          </h2>
+          <style>{`
+            .why-grid {
+              display: grid;
+              grid-template-columns: repeat(5, 1fr);
+              gap: 10px;
+              max-width: 1100px;
+              margin: 0 auto;
+            }
+            @media (max-width: 700px) {
+              .why-grid { grid-template-columns: repeat(2, 1fr); }
+            }
+            @media (max-width: 380px) {
+              .why-grid { grid-template-columns: 1fr; max-width: 320px; }
+            }
+          `}</style>
+          <div className="why-grid">
+            {([["📋", t.w1, t.w1s], ["⚡", t.w2, t.w2s], ["🛡️", t.w3, t.w3s]] as [string, string, string][]).map(([icon, title, sub]) => (
+              <div key={title} style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+                <div style={{ fontSize: 22 }}>{icon}</div>
+                <strong style={{ display: "block", fontSize: 13, color: "#0a1628", marginTop: 8 }}>{title}</strong>
+                <span style={{ fontSize: 11, color: "#666" }}>{sub}</span>
+              </div>
+            ))}
+
+            {/* Carte Diplômes et formation (drone) */}
+            <div style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+              <img src={droneImg} alt="Drone" style={{ width: 36, height: 36, objectFit: "contain", margin: "0 auto" }} />
+              <strong style={{ display: "block", fontSize: 13, color: "#0a1628", marginTop: 8, marginBottom: 6 }}>{t.w4}</strong>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 10.5, color: "#666", lineHeight: 1.5 }}>
+                {t.w4items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Carte 26 ans d'expérience (ROV / scaphandrier) */}
+            <div style={{ textAlign: "center", padding: "16px 8px", background: "rgba(238,242,255,0.85)", borderRadius: 12 }}>
+              <img src={rovImg} alt="ROV" style={{ width: 36, height: 36, objectFit: "contain", margin: "0 auto" }} />
+              <strong style={{ display: "block", fontSize: 13, color: "#0a1628", marginTop: 8 }}>{t.w5}</strong>
+              <span style={{ fontSize: 11, color: "#666" }}>{t.w5s}</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      {/* CONTACT */}
+      <div style={{ background: "#0a1628", color: "white", padding: "52px 24px", textAlign: "center", width: "100%" }}>
+        <h2 style={{ fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 18 }}>{t.contactTitle}</h2>
+        <a href="mailto:contact@drone-rov-service.com" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}>
+          contact@drone-rov-service.com
+        </a>
+        <br />
+        <a href="tel:+33614279803" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500, display: "inline-block", marginTop: 8 }}>
+          {t.phoneLabel} : +33 6 14 27 98 03
+        </a>
+        <p style={{ fontSize: 14, opacity: 0.6, marginTop: 10 }}>{t.contactSub}</p>
+        <LegalFooterLinks />
+        <div style={{ marginTop: 32 }}>
+          <a href="https://info.flagcounter.com/oNkZ">
+            <img src="https://s01.flagcounter.com/count/oNkZ/bg_0a1628/txt_FFFFFF/border_0a1628/columns_4/maxflags_16/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" style={{ border: 0 }} />
+          </a>
         </div>
       </div>
+
+      <CookieBanner />
+
     </div>
   );
 }
+
+export default App;

@@ -23,7 +23,7 @@ const T = {
     w4: "Diplômes et formation",
     w4items: ["STS 01", "STS 02", "Formation d'inspection thermographie par drones", "Formation d'inspection technique par drones"],
     w5: "26 ans d'expérience", w5s: "En tant que scaphandrier",
-    contactTitle: "Contact", contactSub: "Devis gratuit et rapide",
+    contactTitle: "Contact", contactSub: "Devis gratuit et rapide", phoneLabel: "Tél.",
   },
   en: {
     heroTitle: "Aerial and underwater inspection by drone & ROV",
@@ -41,7 +41,7 @@ const T = {
     w4: "Certifications & training",
     w4items: ["STS 01", "STS 02", "Drone thermography inspection training", "Drone technical inspection training"],
     w5: "26 years experience", w5s: "As a commercial diver",
-    contactTitle: "Contact", contactSub: "Free and fast quote",
+    contactTitle: "Contact", contactSub: "Free and fast quote", phoneLabel: "Phone",
   },
   it: {
     heroTitle: "Ispezione aerea e subacquea con drone e ROV",
@@ -59,7 +59,7 @@ const T = {
     w4: "Diplomi e formazione",
     w4items: ["STS 01", "STS 02", "Formazione ispezione termografica con drone", "Formazione ispezione tecnica con drone"],
     w5: "26 anni di esperienza", w5s: "Come palombaro",
-    contactTitle: "Contatto", contactSub: "Preventivo gratuito e rapido",
+    contactTitle: "Contatto", contactSub: "Preventivo gratuito e rapido", phoneLabel: "Tel.",
   },
   es: {
     heroTitle: "Inspección aérea y submarina con drone y ROV",
@@ -77,7 +77,7 @@ const T = {
     w4: "Diplomas y formación",
     w4items: ["STS 01", "STS 02", "Formación en inspección termográfica con drone", "Formación en inspección técnica con drone"],
     w5: "26 años de experiencia", w5s: "Como buzo profesional",
-    contactTitle: "Contacto", contactSub: "Presupuesto gratuito y rápido",
+    contactTitle: "Contacto", contactSub: "Presupuesto gratuito y rápido", phoneLabel: "Tel.",
   },
 };
 
@@ -240,6 +240,10 @@ function App() {
         <h2 style={{ fontSize: "clamp(18px, 2.5vw, 24px)", marginBottom: 18 }}>{t.contactTitle}</h2>
         <a href="mailto:contact@drone-rov-service.com" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500 }}>
           contact@drone-rov-service.com
+        </a>
+        <br />
+        <a href="tel:+33614279803" style={{ color: "#7eb8f7", fontSize: 17, textDecoration: "none", fontWeight: 500, display: "inline-block", marginTop: 8 }}>
+          {t.phoneLabel} : +33 6 14 27 98 03
         </a>
         <p style={{ fontSize: 14, opacity: 0.6, marginTop: 10 }}>{t.contactSub}</p>
         <LegalFooterLinks />
